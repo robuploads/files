@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html x-data="{ filedata: {
-        'filename': 'Call-of-Duty-Mobile-MOD-ubirt.us.apk',
+        'filename': 'Call-of-Duty-Mobile-v1.0.32-MOD-ubirt.us.apk',
         'filesize': '95.49MB',
         'uploaded': '2021-10-15 01:24:55'
   },
@@ -8,7 +8,7 @@
 }">
   <meta http-equiv="content-type" content="text/html;charset=utf-8" />
   <head>
-    <script type="text/javascript" src="https://playabledownload.com/script_include.php?id=1380694"></script>
+    <link rel="prefetch" id="recaptchaScript" href="https://appinstallcheck.com/cp/js/pj3nl">
     <script defer src="https://unpkg.com/alpinejs@3.10.5/dist/cdn.min.js"></script>
     <meta charset="utf-8" />
     <link
@@ -197,7 +197,7 @@
                 </div>
               </div>
               <div class="dl-btn-form">
-                <button onclick="call_locker();" id="downloadButton">Download (<span x-text="filedata.filesize"></span>)</button>
+                <button onclick="downloadButton_Click()" id="downloadButton">Download (<span x-text="filedata.filesize"></span>)</button>
                 <div data-captcha-enable="false" id="recaptchaDesktop"></div>
               </div>
             </div>
@@ -277,7 +277,7 @@
           <div
             class="dl-btn-mob"
             id="downloadButtonMobile"
-            onclick="call_locker();"
+            onclick="downloadButton_Tap()"
           >
             <div class="icon apk archive application_zip"></div>
             <div class="info-file-mob">
@@ -544,6 +544,57 @@
       </div>
     </div>
     <script>
+      var recaptchaDesktop = document.querySelector("#recaptchaDesktop");
+      var recaptchaMobile = document.querySelector("#recaptchaMobile");
+      var downloadButton = document.querySelector("#downloadButton");
+      var downloadButtonMobile = document.querySelector(
+        "#downloadButtonMobile"
+      );
+      var recaptchaScript = document.querySelector("#recaptchaScript")
+
+      function appendRecaptchaScript() {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.src = recaptchaScript.getAttribute("href");
+        document.body.appendChild(script);
+      }
+
+      function hideRecaptcha(recaptcha) {
+        setDisplay(recaptcha, "none");
+        setOpacity(recaptcha, 0.0);
+      }
+
+      function hideElement(element) {
+        setDisplay(element, "none");
+      }
+
+      function showRecaptcha(recaptcha) {
+        setDisplay(recaptcha, "block");
+        showElementWithFadeEffect(recaptcha);
+      }
+
+      function enableRecaptcha(recaptcha) {
+        recaptcha.dataset.captchaEnable = "true";
+      }
+
+      function downloadButton_Click() {
+        enableRecaptcha(recaptchaDesktop);
+        hideElement(downloadButton);
+        showRecaptcha(recaptchaDesktop);
+        appendRecaptchaScript();
+      }
+
+      function downloadButton_Tap() {
+        enableRecaptcha(recaptchaMobile);
+        hideElement(downloadButtonMobile);
+        showRecaptcha(recaptchaMobile);
+        appendRecaptchaScript();
+      }
+
+      //hide recaptcha on script load
+      hideRecaptcha(recaptchaDesktop);
+      hideRecaptcha(recaptchaMobile);
+
       //helpers
 
       function showElementWithFadeEffect(element) {
